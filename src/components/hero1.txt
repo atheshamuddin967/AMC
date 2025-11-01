@@ -1,0 +1,121 @@
+import { useEffect, useRef } from 'react';
+import { Button } from '@/components/ui/button';
+import { ChevronRight } from 'lucide-react';
+import gsap from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
+
+gsap.registerPlugin(ScrollTrigger);
+
+export const HeroSection = () => {
+  const heroRef = useRef(null);
+  const imageRef = useRef(null);
+  const sunRef = useRef(null);
+  const titleRef = useRef(null);
+  const subtitleRef = useRef(null);
+  const buttonsRef = useRef(null);
+
+  useEffect(() => {
+    const ctx = gsap.context(() => {
+      const tl = gsap.timeline({ defaults: { ease: 'power3.out' } });
+
+      // 🌄 1. Sun appears from left with brightness increase
+      tl.fromTo(
+        sunRef.current,
+        { x: -200, y: 100, opacity: 0, filter: 'brightness(0.3)' },
+        {
+          x: 0,
+          y: 0,
+          opacity: 1,
+          duration: 2.5,
+          filter: 'brightness(1.5)',
+          ease: 'power2.out',
+        }
+      );
+
+      // ☀️ 2. Sun glowing pulse (infinite soft brightness pulse)
+      gsap.to(sunRef.current, {
+        filter: 'brightness(2)',
+        duration: 3,
+        repeat: -1,
+        yoyo: true,
+        ease: 'sine.inOut',
+      });
+
+      // 🏗️ 3. Solar panels lift-in
+      tl.from(imageRef.current, {
+        y: 200,
+        opacity: 0,
+        duration: 1.6,
+        ease: 'power3.out',
+      }, '-=1');
+
+      // ✍️ 4. Text animations
+      tl.from(titleRef.current, { y: 50, opacity: 0, duration: 1 }, '-=0.5')
+        .from(subtitleRef.current, { y: 30, opacity: 0, duration: 1 }, '-=0.6')
+        .from(buttonsRef.current, { y: 20, opacity: 0, duration: 1 }, '-=0.6');
+
+    }, heroRef);
+
+    return () => ctx.revert();
+  }, []);
+
+  return (
+    <section
+      ref={heroRef}
+      className="relative h-screen flex items-center justify-center overflow-hidden bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900"
+    >
+      {/* ☀️ Animated Sun */}
+      <div
+        ref={sunRef}
+        className="absolute top-[20%] left-[10%] w-48 h-48 rounded-full bg-gradient-to-br from-yellow-300 via-orange-400 to-red-500 blur-3xl opacity-80 shadow-[0_0_100px_30px_rgba(255,200,0,0.3)]"
+      ></div>
+
+      {/* 🌇 Solar Panels Image */}
+      <div
+        ref={imageRef}
+        className="absolute inset-0 bg-[url('https://plus.unsplash.com/premium_photo-1682148012184-f51381dd28fe?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&q=80&w=2340')] bg-cover bg-center opacity-30"
+      ></div>
+
+      {/* Gradient Overlay */}
+      <div className="absolute inset-0 bg-gradient-to-t from-slate-900/90 via-slate-900/60 to-transparent"></div>
+
+      {/* Text Content */}
+      <div className="relative z-10 text-center px-6 max-w-5xl mx-auto">
+        <h1
+          ref={titleRef}
+          className="text-5xl md:text-7xl font-bold text-white mb-6 leading-tight drop-shadow-lg"
+        >
+          Building the Future — <span className="text-yellow-400">Powering Sustainability</span>
+        </h1>
+        <p
+          ref={subtitleRef}
+          className="text-xl md:text-2xl text-gray-300 mb-10 max-w-3xl mx-auto"
+        >
+          From Construction to Renewable Energy — AMC empowers progress with innovation.
+        </p>
+        <div
+          ref={buttonsRef}
+          className="flex flex-col sm:flex-row gap-4 justify-center"
+        >
+          <Button
+            size="lg"
+            className="bg-yellow-500 hover:bg-yellow-400 text-slate-900 font-semibold px-8 py-6 text-lg"
+          >
+            Explore Our Services <ChevronRight className="ml-2" />
+          </Button>
+          <Button
+            size="lg"
+            className="bg-slate-700 hover:bg-slate-600 text-white px-8 py-6 text-lg"
+          >
+            View Projects
+          </Button>
+        </div>
+      </div>
+
+      {/* Scroll Indicator */}
+      <div className="absolute bottom-10 left-1/2 -translate-x-1/2 animate-bounce">
+        <ChevronRight className="rotate-90 text-white w-8 h-8" />
+      </div>
+    </section>
+  );
+};
