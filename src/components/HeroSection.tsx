@@ -1,7 +1,8 @@
-import { useEffect, useRef } from 'react';
+import { 
+   useRef } from 'react';
 import { Button } from '@/components/ui/button';
 import { ChevronRight } from 'lucide-react';
-import gsap from 'gsap';
+import herovid from '@/assets/images/heroVid.mp4'; // 👈 Import your video file
 
 export const HeroSection = () => {
   const heroRef = useRef(null);
@@ -10,59 +11,25 @@ export const HeroSection = () => {
   const subtitleRef = useRef(null);
   const buttonsRef = useRef(null);
 
-  useEffect(() => {
-    const ctx = gsap.context(() => {
-      const tl = gsap.timeline({ defaults: { ease: 'power3.out' } });
-
-      // Sun animation – ab upar se aayega
-      tl.fromTo(
-        sunRef.current,
-        { x: -300, y: -200, opacity: 0, filter: 'brightness(0.3)' },
-        {
-          x: 0,
-          y: 0,
-          opacity: 1,
-          duration: 2.5,
-          filter: 'brightness(1.5)',
-          ease: 'power2.out',
-        }
-      );
-
-      // Sun pulse
-      gsap.to(sunRef.current, {
-        filter: 'brightness(2)',
-        duration: 3,
-        repeat: -1,
-        yoyo: true,
-        ease: 'sine.inOut',
-      });
-
-      // Text animations
-      tl.from(titleRef.current, { y: 50, opacity: 0, duration: 1 }, '-=1.5')
-        .from(subtitleRef.current, { y: 30, opacity: 0, duration: 1 }, '-=0.8')
-        .from(buttonsRef.current, { y: 20, opacity: 0, duration: 1 }, '-=0.6');
-    }, heroRef);
-
-    return () => ctx.revert();
-  }, []);
-
   return (
     <section
       ref={heroRef}
       className="relative h-screen flex items-center justify-center overflow-hidden"
-      style={{
-        backgroundImage: `url('https://plus.unsplash.com/premium_photo-1682148012184-f51381dd28fe?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&q=80&w=2340')`,
-        backgroundSize: 'cover',
-        backgroundPosition: 'center',
-      }}
     >
-      {/* Animated Sun – Ab Upar Left Mein */}
-      <div
-        ref={sunRef}
-        className="absolute top-8 left-8 md:top-12 md:left-12 w-56 h-56 md:w-64 md:h-64 
-                   rounded-full bg-gradient-to-br from-yellow-300 via-orange-400 to-red-500 
-                   blur-3xl opacity-80 shadow-[0_0_120px_40px_rgba(255,200,0,0.4)]"
-      ></div>
+      {/* Background Video */}
+      <video
+        className="absolute top-0 left-0 w-full h-full object-cover"
+        src={herovid}
+        autoPlay
+        loop
+        muted
+        playsInline
+      />
+
+      {/* Overlay for contrast */}
+      <div className="absolute inset-0 bg-black/40" />
+
+
 
       {/* Text Section with Clean Glass Box */}
       <div className="relative z-10 text-center px-6 max-w-5xl mx-auto">
@@ -75,7 +42,7 @@ export const HeroSection = () => {
             }}
           >
             Building the Future —{' '}
-            <span className="text-yellow-400">Powering Sustainability</span>
+            <span className="text-secondary">Powering Sustainability</span>
           </h1>
 
           <p
@@ -92,8 +59,7 @@ export const HeroSection = () => {
           <div ref={buttonsRef} className="flex flex-col sm:flex-row gap-4 justify-center">
             <Button
               size="lg"
-              className="bg-yellow-500 hover:bg-yellow-400 text-slate-900 font-semibold px-8 py-6 text-lg shadow-lg"
-              style={{ textShadow: '1px 1px 3px rgba(0,0,0,0.7)' }}
+              className="bg-secondary hover:bg-primary text-white font-semibold px-8 py-6 text-lg shadow-lg"
             >
               Explore Our Services <ChevronRight className="ml-2" />
             </Button>

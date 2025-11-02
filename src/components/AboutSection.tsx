@@ -2,104 +2,86 @@ import React, { useEffect, useRef } from 'react';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Award, Lightbulb, Leaf } from 'lucide-react';
 import gsap from 'gsap';
-import { ScrollTrigger } from 'gsap/ScrollTrigger';
-
-gsap.registerPlugin(ScrollTrigger);
+import { Images } from '@/assets/images';
 
 export const AboutSection = () => {
-  const sectionRef = useRef<HTMLDivElement | null>(null);
-  const imageRef = useRef<HTMLDivElement | null>(null);
-  const contentRef = useRef<HTMLDivElement | null>(null);
-  const cardsRef = useRef<HTMLDivElement[]>([]);
+  const bounceRef = useRef<HTMLDivElement | null>(null);
 
   useEffect(() => {
-    const ctx = gsap.context(() => {
-      gsap.from(imageRef.current, {
-        x: -100,
-        opacity: 0,
-        duration: 1,
-        ease: 'power3.out',
-        scrollTrigger: {
-          trigger: sectionRef.current,
-          start: 'top 70%',
-          invalidateOnRefresh: true,
-          toggleActions: 'play none none none'
-        }
+    if (bounceRef.current) {
+      gsap.to(bounceRef.current, {
+        y: -20,
+        duration: 1.5,
+        repeat: -1,
+        yoyo: true,
+        ease: 'power1.inOut',
       });
-
-      gsap.from(contentRef.current, {
-        x: 100,
-        opacity: 0,
-        duration: 1,
-        ease: 'power3.out',
-        scrollTrigger: {
-          trigger: sectionRef.current,
-          start: 'top 70%',
-          invalidateOnRefresh: true,
-          toggleActions: 'play none none none'
-        }
-      });
-
-      gsap.from(cardsRef.current, {
-        y: 100,
-        opacity: 0,
-        duration: 1,
-        stagger: 0.2,
-        ease: 'power3.out',
-        scrollTrigger: {
-          trigger: cardsRef.current[0],
-          start: 'top 80%',
-          invalidateOnRefresh: true,
-          toggleActions: 'play none none none'
-        }
-      });
-    }, sectionRef);
-
-    return () => ctx.revert();
+    }
   }, []);
 
-  const addToRefs = (el: HTMLDivElement | null) => {
-    if (el && !cardsRef.current.includes(el)) {
-      cardsRef.current.push(el);
-    }
-  };
-
   return (
-    <section ref={sectionRef} className="py-20 px-6 bg-white">
+    <section className="py-20 px-6 bg-white">
       <div className="max-w-7xl mx-auto">
+        {/* Heading */}
         <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-bold text-slate-900 mb-4">About AMC</h2>
+          <h2 className="text-4xl md:text-5xl font-bold text-slate-900 mb-4">ABOUT US</h2>
           <div className="w-24 h-1 bg-primary mx-auto"></div>
         </div>
 
-        {/* About with Image */}
-        <div className="grid md:grid-cols-2 gap-12 mb-20 items-center">
-          <div ref={imageRef} className="relative h-[400px] rounded-2xl overflow-hidden shadow-2xl">
-            <img 
-              src="https://images.unsplash.com/photo-1504917595217-d4dc5ebe6122?w=800&q=80" 
-              alt="AMC Team"
-              className="w-full h-full object-cover"
+        {/* About with Double Image */}
+        <div className="grid md:grid-cols-2 gap-12 mb-20 items-center relative">
+          {/* Left Image Section */}
+          <div className="relative h-[400px] rounded-2xl overflow-hidden shadow-2xl">
+            <img
+              src={Images.about1}
+              alt="Main Office"
+              className="w-full h-full object-cover rounded-2xl"
             />
-            <div className="absolute inset-0 bg-gradient-to-t from-slate-900/50 to-transparent"></div>
+
+            {/* Overlay Bouncing Image */}
+            <div
+              ref={bounceRef}
+              className="absolute -right-10 bottom-[0] w-1/2 h-1/2 rounded-xl overflow-hidden shadow-xl border-4 border-white"
+            >
+              <img
+                src={Images.about2}
+                alt="Team Collaboration"
+                className="w-full h-full object-cover"
+              />
+            </div>
           </div>
 
-          <div ref={contentRef}>
-            <h3 className="text-3xl font-bold text-slate-900 mb-6">Who We Are</h3>
+          {/* Right Content */}
+          <div>
+            <h3 className="text-3xl font-bold text-slate-900 mb-6">WHO ARE WE</h3>
             <p className="text-lg text-gray-700 leading-relaxed mb-6">
-              AMC provides comprehensive solutions for banking, commercial, and industrial spaces. We offer a full range of design, construction, and technical services — from building infrastructure to renewable energy, low current systems, and intelligent building management.
+              Empowering community banks & financial facilities to compete against the big banks
+              with proven expertise and innovative thinking.
             </p>
             <p className="text-lg text-gray-700 leading-relaxed">
-              Our team specializes in listening and then turning your goals into inviting, fully functional retail and commercial spaces. We combine creativity with practicality to deliver designs that are aesthetic, efficient, and aligned with your brand identity.
+              No matter the size of your financial institution, we work with you to create memorable,
+              cohesive, full-service retail branch environments that make an impression. The spaces and
+              products we create are future-facing and dynamic: designed to serve your community today
+              and grow with it tomorrow.
             </p>
           </div>
         </div>
-        
+
+        {/* Goals Section */}
+        <div className="text-center mb-12">
+          <h3 className="text-3xl font-bold text-slate-900 mb-4">OUR GOALS & COLLABORATIVE PROCESS</h3>
+          <p className="text-lg text-gray-700 max-w-3xl mx-auto">
+            We design sustainable, high-impact banking branches and headquarters tailored to your
+            needs—helping you better serve your employees, customers, and communities.
+          </p>
+        </div>
+
         {/* Feature Cards */}
         <div className="grid md:grid-cols-3 gap-8">
-          <Card ref={addToRefs} className="border-none shadow-lg hover:shadow-xl transition-all duration-300 overflow-hidden group">
+          <Card className="border-none shadow-lg hover:shadow-xl transition-all duration-300 overflow-hidden group">
             <div className="h-48 overflow-hidden">
-              <img 
-                src="https://images.unsplash.com/photo-1553877522-43269d4ea984?w=600&q=80" 
+              <img
+                src="https://images.unsplash.com/photo-1553877522-43269d4ea984?w=600&q=80"
                 alt="Experience"
                 className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
               />
@@ -113,10 +95,10 @@ export const AboutSection = () => {
             </CardContent>
           </Card>
 
-          <Card ref={addToRefs} className="border-none shadow-lg hover:shadow-xl transition-all duration-300 overflow-hidden group">
+          <Card className="border-none shadow-lg hover:shadow-xl transition-all duration-300 overflow-hidden group">
             <div className="h-48 overflow-hidden">
-              <img 
-                src="https://images.unsplash.com/photo-1581092160562-40aa08e78837?w=600&q=80" 
+              <img
+                src="https://images.unsplash.com/photo-1581092160562-40aa08e78837?w=600&q=80"
                 alt="Innovation"
                 className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
               />
@@ -130,10 +112,10 @@ export const AboutSection = () => {
             </CardContent>
           </Card>
 
-          <Card ref={addToRefs} className="border-none shadow-lg hover:shadow-xl transition-all duration-300 overflow-hidden group">
+          <Card className="border-none shadow-lg hover:shadow-xl transition-all duration-300 overflow-hidden group">
             <div className="h-48 overflow-hidden">
-              <img 
-                src="https://images.unsplash.com/photo-1473341304170-971dccb5ac1e?w=600&q=80" 
+              <img
+                src="https://images.unsplash.com/photo-1473341304170-971dccb5ac1e?w=600&q=80"
                 alt="Sustainability"
                 className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
               />

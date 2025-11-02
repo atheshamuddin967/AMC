@@ -1,6 +1,7 @@
 import 
  { useState, useEffect } from 'react';
 import { Menu, X } from 'lucide-react';
+import { Images } from '@/assets/images';
 
 export const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -31,7 +32,7 @@ export const Navbar = () => {
         <div className="flex items-center justify-between">
           {/* Logo */}
           <div className="text-2xl font-bold text-white">
-            <span className="text-secondary">AMC</span>
+            <img src={Images.logo} alt="AMC Logo" style={{ height: '70px', width: 'auto' }} />
           </div>
 
           {/* Desktop Navigation */}

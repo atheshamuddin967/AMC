@@ -8,9 +8,9 @@ import { Navbar } from './components/Header';
 import { HeroSection } from './components/HeroSection';
 import { MissionVision } from './components/MissionVission';
 import { ProcessTimeline } from './components/ProcessessTimeline';
-import { ServicesOverview } from './components/ServicesOverView';
 import { StatsSection } from './components/Stats';
 import { WhyChooseUs } from './components/Whychoseus';
+import ServicesOverview from './components/ServicesOverView';
 
 gsap.registerPlugin(ScrollTrigger);
 

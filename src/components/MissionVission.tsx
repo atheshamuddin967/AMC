@@ -1,5 +1,4 @@
 import React, { useEffect, useRef } from 'react';
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Users, Leaf } from 'lucide-react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
@@ -8,33 +7,29 @@ gsap.registerPlugin(ScrollTrigger);
 
 export const MissionVision = () => {
   const sectionRef = useRef(null);
-  const missionRef = useRef(null);
-  const visionRef = useRef(null);
+  const floatingImgRef = useRef(null);
 
   useEffect(() => {
     const ctx = gsap.context(() => {
-      gsap.from(missionRef.current, {
-        x: -100,
-        opacity: 0,
-        duration: 1,
-        ease: 'power3.out',
-        scrollTrigger: {
-          trigger: sectionRef.current,
-          start: 'top 75%',
-          toggleActions: 'play none none none'
-        }
+      // Floating (bouncing) image animation
+      gsap.to(floatingImgRef.current, {
+        y: -20,
+        duration: 2,
+        repeat: -1,
+        yoyo: true,
+        ease: 'power1.inOut',
       });
 
-      gsap.from(visionRef.current, {
-        x: 100,
+      // Fade-in animation for section
+      gsap.from(sectionRef.current, {
         opacity: 0,
-        duration: 1,
+        y: 50,
+        duration: 1.2,
         ease: 'power3.out',
         scrollTrigger: {
           trigger: sectionRef.current,
-          start: 'top 75%',
-          toggleActions: 'play none none none'
-        }
+          start: 'top 80%',
+        },
       });
     }, sectionRef);
 
@@ -42,50 +37,81 @@ export const MissionVision = () => {
   }, []);
 
   return (
-    <section ref={sectionRef} className="py-20 px-6 bg-gradient-to-br from-slate-50 to-slate-100">
-      <div className="max-w-6xl mx-auto">
-        <div className="grid md:grid-cols-2 gap-8">
-          <Card ref={missionRef} className="border-none shadow-xl hover:scale-105 transition-transform duration-300 overflow-hidden">
-            <div className="h-64 overflow-hidden">
-              <img 
-                src="https://images.unsplash.com/photo-1600880292203-757bb62b4baf?w=800&q=80" 
-                alt="Our Mission"
-                className="w-full h-full object-cover"
-              />
-            </div>
-            <CardHeader className="bg-secondary text-white">
-              <CardTitle className="text-3xl flex items-center gap-3">
-                <Users className="w-10 h-10" />
-                Our Mission
-              </CardTitle>
-            </CardHeader>
-            <CardContent className="pt-6 bg-white">
-              <p className="text-lg text-gray-700">
-                Collaborating with partners to build sustainable community projects that enhance quality of life and drive economic growth through innovative construction and energy solutions.
-              </p>
-            </CardContent>
-          </Card>
+    <section
+      ref={sectionRef}
+      className="relative py-24 px-6 bg-gradient-to-br from-slate-50 via-white to-slate-100 overflow-hidden"
+    >
+      {/* Decorative gradient background */}
+      <div className="absolute top-0 left-0 w-full h-full bg-[radial-gradient(ellipse_at_top_right,rgba(0,123,255,0.08),transparent)]"></div>
 
-          <Card ref={visionRef} className="border-none shadow-xl hover:scale-105 transition-transform duration-300 overflow-hidden">
-            <div className="h-64 overflow-hidden">
-              <img 
-                src="https://images.unsplash.com/photo-1497366216548-37526070297c?w=800&q=80" 
-                alt="Our Vision"
-                className="w-full h-full object-cover"
-              />
-            </div>
-            <CardHeader className="bg-primary text-white">
-              <CardTitle className="text-3xl flex items-center gap-3">
-                <Leaf className="w-10 h-10" />
-                Our Vision
-              </CardTitle>
-            </CardHeader>
-            <CardContent className="pt-6 bg-white">
-              <p className="text-lg text-gray-700">
-                Design for the future, build for sustainability — creating innovative solutions that stand the test of time while protecting our environment for generations to come.
+      <div className="max-w-7xl mx-auto grid md:grid-cols-2 gap-16 items-center relative z-10">
+        {/* LEFT SIDE - TEXT CONTENT */}
+        <div>
+          <h2 className="text-5xl font-bold text-slate-900 mb-8 leading-tight">
+            Our Mission & Vision
+          </h2>
+
+          <div className="space-y-10">
+            {/* Mission */}
+            <div className="group">
+              <div className="flex items-center gap-4 mb-4">
+                <div className="bg-secondary/10 p-3 rounded-2xl group-hover:bg-primary/20 transition-colors">
+                  <Users className="w-8 h-8 text-secondary" />
+                </div>
+                <h3 className="text-2xl font-semibold text-slate-800">
+                  Our Mission
+                </h3>
+              </div>
+              <p className="text-gray-700 text-lg leading-relaxed">
+                To empower communities and organizations through sustainable, smart, and efficient
+                construction and engineering practices — improving lives while preserving the
+                planet.
               </p>
-            </CardContent>
-          </Card>
+            </div>
+
+            {/* Vision */}
+            <div className="group">
+              <div className="flex items-center gap-4 mb-4">
+                <div className="bg-secondary/10 p-3 rounded-2xl group-hover:bg-green-200 transition-colors">
+                  <Leaf className="w-8 h-8 text-secondary" />
+                </div>
+                <h3 className="text-2xl font-semibold text-slate-800">
+                  Our Vision
+                </h3>
+              </div>
+              <p className="text-gray-700 text-lg leading-relaxed">
+                To lead innovation in sustainable infrastructure — creating future-ready spaces that
+                harmonize with nature and drive progress for generations to come.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        {/* RIGHT SIDE - DOUBLE IMAGE DESIGN */}
+        <div className="relative w-full flex justify-center">
+          {/* Base image */}
+          <div className="relative rounded-3xl overflow-hidden shadow-2xl w-[85%]">
+            <img
+              src="https://images.unsplash.com/photo-1581092160562-40aa08e78837?w=900&q=80"
+              alt="Innovation"
+              className="w-full h-[450px] object-cover rounded-3xl"
+            />
+          </div>
+
+          {/* Floating overlay image */}
+          <div
+            ref={floatingImgRef}
+            className="absolute -bottom-10 -right-10 w-[60%] rounded-3xl overflow-hidden shadow-2xl border-4 border-white"
+          >
+            <img
+              src="https://images.unsplash.com/photo-1600880292203-757bb62b4baf?w=800&q=80"
+              alt="Sustainability"
+              className="w-full h-[280px] object-cover rounded-3xl"
+            />
+          </div>
+
+          {/* Glow accent */}
+          <div className="absolute -bottom-16 -right-20 w-72 h-72 bg-primary/20 blur-3xl rounded-full"></div>
         </div>
       </div>
     </section>
