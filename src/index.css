@@ -69,3 +69,19 @@ html {
     @apply bg-background text-foreground;
   }
 }
+/* In your global.css or a Tailwind layer */
+@layer utilities {
+  .tab-width {
+    flex: 1 1 calc(50% - 1rem); /* 2 per row (mobile) */
+  }
+  @media (min-width: 640px) {
+    .tab-width {
+      flex: 1 1 calc(33.333% - 1rem); /* 3 per row (tablet) */
+    }
+  }
+  @media (min-width: 1024px) {
+    .tab-width {
+      flex: 1 1 calc(20% - 1rem); /* 5 per row (desktop) */
+    }
+  }
+}

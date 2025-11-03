@@ -183,61 +183,53 @@ export default function ServicesOverview() {
         <Tabs value={activeTab} onValueChange={setActiveTab} className="w-full">
 <TabsList
   className="
-    grid 
-    grid-cols-2
-    sm:grid-cols-3
-    md:grid-cols-4
-    lg:grid-cols-5
-    xl:grid-cols-6
+    flex flex-wrap justify-center
     gap-3 sm:gap-4
     p-0 bg-transparent
     h-auto
   "
 >
-  {services.map((service, index) => {
-    // only center if it's the last one AND total items % columns !== 0
-    const isLastExtra = index === services.length - 1 && services.length % 6 !== 0;
-
-    return (
-      <TabsTrigger
-        key={service.id}
-        value={service.id}
-        className={`
-          flex flex-col items-center justify-between
-          p-3 sm:p-4 md:p-5
-          rounded-xl
-          bg-card border-2 border-transparent
-          data-[state=active]:border-white data-[state=active]:border-2
-          data-[state=active]:bg-white/10
-          hover:bg-white/5 hover:border-white/30
-          transition-all duration-300 ease-in-out
-          group
-          min-h-[140px] sm:min-h-[150px] md:min-h-[160px]
-          h-full text-center
-          ${activeTab === service.id ? 'ring-2 ring-white/20 ring-offset-2 ring-offset-background2' : ''}
-          ${isLastExtra ? 'col-span-full flex justify-center' : ''}
-        `}
-      >
-        <div className="flex flex-col items-center justify-center flex-1">
-          <div className="mb-2 text-muted-foreground group-data-[state=active]:text-white transition-all duration-300 scale-100 group-data-[state=active]:scale-110">
-            {service.icon}
-          </div>
-          <span
-            className="
-              text-[11px] sm:text-sm md:text-base
-              font-semibold text-center
-              group-data-[state=active]:text-white
-              line-clamp-2
-              break-words whitespace-normal
-              transition-all duration-300
-            "
-          >
-            {service.title}
-          </span>
+  {services.map((service) => (
+    <TabsTrigger
+      key={service.id}
+      value={service.id}
+      className={`
+        flex flex-col items-center justify-between
+        p-3 sm:p-4 md:p-5
+        rounded-xl
+        bg-card border-2 border-transparent
+        data-[state=active]:border-white data-[state=active]:border-2
+        data-[state=active]:bg-white/10
+        hover:bg-white/5 hover:border-white/30
+        transition-all duration-300 ease-in-out
+        group
+        min-h-[140px] sm:min-h-[150px] md:min-h-[160px]
+        h-full text-center
+        ${activeTab === service.id ? 'ring-2 ring-white/20 ring-offset-2 ring-offset-background2' : ''}
+        w-[calc(50%-0.75rem)]     /* 2 per row on mobile */
+        sm:w-[calc(33.333%-1rem)] /* 3 per row on tablet */
+        lg:w-[calc(20%-1rem)]     /* 5 per row on desktop */
+      `}
+    >
+      <div className="flex flex-col items-center justify-center flex-1">
+        <div className="mb-2 text-muted-foreground group-data-[state=active]:text-white transition-all duration-300 scale-100 group-data-[state=active]:scale-110">
+          {service.icon}
         </div>
-      </TabsTrigger>
-    );
-  })}
+        <span
+          className="
+            text-[11px] sm:text-sm md:text-base
+            font-semibold text-center
+            group-data-[state=active]:text-white
+            line-clamp-2
+            break-words whitespace-normal
+            transition-all duration-300
+          "
+        >
+          {service.title}
+        </span>
+      </div>
+    </TabsTrigger>
+  ))}
 </TabsList>
 
 

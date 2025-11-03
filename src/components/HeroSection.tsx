@@ -2,7 +2,6 @@ import {
    useRef } from 'react';
 import { Button } from '@/components/ui/button';
 import { ChevronRight } from 'lucide-react';
-import herovid from '@/assets/images/heroVid.mp4'; // 👈 Import your video file
 
 export const HeroSection = () => {
   const heroRef = useRef(null);
@@ -15,15 +14,7 @@ export const HeroSection = () => {
       ref={heroRef}
       className="relative h-screen flex items-center justify-center overflow-hidden"
     >
-      {/* Background Video */}
-      {/* <video
-        className="absolute top-0 left-0 w-full h-full object-cover"
-        src={"https://www.youtube.com/embed/68fVavlz3Sg?si=rySWQvvI9Hcc0X-j" }
-        autoPlay
-        loop
-        muted
-        playsInline
-      /> */}
+
          <div className="absolute top-0 left-0 w-full h-full overflow-hidden">
         <iframe
           className="absolute top-1/2 left-1/2 w-[177.78vh] h-[100vh] min-w-full min-h-full -translate-x-1/2 -translate-y-1/2 scale-125"
