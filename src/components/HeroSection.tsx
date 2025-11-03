@@ -34,7 +34,7 @@ export const HeroSection = () => {
         <div className="bg-white/10 backdrop-blur-md rounded-2xl p-8 md:p-12 shadow-2xl border border-white/20">
           <h1
             ref={titleRef}
-            className="text-5xl md:text-7xl font-bold text-white mb-6 leading-tight"
+            className="text-3xl md:text-7xl font-bold text-white mb-6 leading-tight"
             style={{
               textShadow: '2px 2px 8px rgba(0,0,0,0.9)',
             }}
