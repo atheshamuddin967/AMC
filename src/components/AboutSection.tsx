@@ -1,4 +1,5 @@
-import React, { useEffect, useRef } from 'react';
+import 
+ { useEffect, useRef } from 'react';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Award, Lightbulb, Leaf } from 'lucide-react';
 import gsap from 'gsap';

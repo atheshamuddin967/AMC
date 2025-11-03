@@ -1,12 +1,13 @@
-import React, { useEffect, useRef } from 'react';
+import 
+ { useEffect, useRef } from 'react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
 gsap.registerPlugin(ScrollTrigger);
 
 export const StatsSection = () => {
-  const sectionRef = useRef(null);
-  const statsRef = useRef([]);
+  const sectionRef = useRef<HTMLDivElement | null>(null);
+  const statsRef = useRef<HTMLDivElement[]>([]);
 
   useEffect(() => {
     const ctx = gsap.context(() => {
@@ -14,7 +15,7 @@ export const StatsSection = () => {
         scale: 0.5,
         opacity: 0,
         duration: 0.8,
-        stagger: 0.15,
+        stagger: 0.15,  
         ease: 'back.out(1.7)',
         scrollTrigger: {
           trigger: sectionRef.current,
@@ -27,7 +28,7 @@ export const StatsSection = () => {
     return () => ctx.revert();
   }, []);
 
-  const addToRefs = (el) => {
+  const addToRefs = (el:any) => {
     if (el && !statsRef.current.includes(el)) {
       statsRef.current.push(el);
     }
@@ -41,7 +42,7 @@ export const StatsSection = () => {
   ];
 
   return (
-    <section ref={sectionRef} className="py-20 px-6 bg-gradient-to-r from-primary to-secondary text-white">
+    <section ref={sectionRef} className="py-20 px-6 bg-gradient-to-r from-background2 to-secondary text-white">
       <div className="max-w-7xl mx-auto">
         <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
           {stats.map((stat, index) => (

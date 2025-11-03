@@ -1,8 +1,8 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
-import { Building2, Zap, Sun, Camera, Trees, Settings } from 'lucide-react';
+import { Tabs, TabsList, TabsTrigger } from '@/components/ui/tabs';
+import { Building2, Zap, Sun, Camera, Trees, Settings, MapPin } from 'lucide-react';
 import { Images } from '@/assets/images';
 
 const services = [
@@ -45,6 +45,27 @@ Our construction and build solutions include:
 • Quality assurance and control  
 • Safety compliance and sustainability integration`,
     image: Images.construction,
+  },
+    {
+    id: 'infrastructure',
+    icon: <MapPin className="w-10 h-10 text-primary" />,
+    title: "Infrastructure Development",
+    description: `AMC provides integrated infrastructure development services that form the backbone of modern communities 
+and industrial operations. Our expertise covers planning, design, and execution of essential systems that ensure 
+reliable connectivity, sustainability, and long-term value.
+
+We specialize in delivering infrastructure projects with precision and efficiency, 
+ensuring compliance with international standards and environmental guidelines. 
+Our focus is on developing durable, future-ready systems that support growing urban and industrial demands.
+
+Our Infrastructure Development services include:
+• Roads and highways construction  
+• Water supply and drainage systems  
+• Sewage and waste management solutions  
+• Power and utility networks  
+• Telecommunication and data infrastructure  
+• Smart city and sustainable infrastructure initiatives`,
+    image: Images.infra,
   },
   {
     id: 'electrical',
@@ -173,44 +194,50 @@ export default function ServicesOverview() {
     h-auto
   "
 >
-  {services.map((service) => (
-    <TabsTrigger
-      key={service.id}
-      value={service.id}
-      className={`
-        flex flex-col items-center justify-between
-        p-3 sm:p-4 md:p-5
-        rounded-xl
-        bg-card border-2 border-transparent
-        data-[state=active]:border-white data-[state=active]:border-2
-        data-[state=active]:bg-white/10
-        hover:bg-white/5 hover:border-white/30
-        transition-all duration-300 ease-in-out
-        group
-        min-h-[140px] sm:min-h-[150px] md:min-h-[160px]
-        h-full text-center
-        ${activeTab === service.id ? 'ring-2 ring-white/20 ring-offset-2 ring-offset-background2' : ''}
-      `}
-    >
-      <div className="flex flex-col items-center justify-center flex-1">
-        <div className="mb-2 text-muted-foreground group-data-[state=active]:text-white transition-all duration-300 scale-100 group-data-[state=active]:scale-110">
-          {service.icon}
+  {services.map((service, index) => {
+    // only center if it's the last one AND total items % columns !== 0
+    const isLastExtra = index === services.length - 1 && services.length % 6 !== 0;
+
+    return (
+      <TabsTrigger
+        key={service.id}
+        value={service.id}
+        className={`
+          flex flex-col items-center justify-between
+          p-3 sm:p-4 md:p-5
+          rounded-xl
+          bg-card border-2 border-transparent
+          data-[state=active]:border-white data-[state=active]:border-2
+          data-[state=active]:bg-white/10
+          hover:bg-white/5 hover:border-white/30
+          transition-all duration-300 ease-in-out
+          group
+          min-h-[140px] sm:min-h-[150px] md:min-h-[160px]
+          h-full text-center
+          ${activeTab === service.id ? 'ring-2 ring-white/20 ring-offset-2 ring-offset-background2' : ''}
+          ${isLastExtra ? 'col-span-full flex justify-center' : ''}
+        `}
+      >
+        <div className="flex flex-col items-center justify-center flex-1">
+          <div className="mb-2 text-muted-foreground group-data-[state=active]:text-white transition-all duration-300 scale-100 group-data-[state=active]:scale-110">
+            {service.icon}
+          </div>
+          <span
+            className="
+              text-[11px] sm:text-sm md:text-base
+              font-semibold text-center
+              group-data-[state=active]:text-white
+              line-clamp-2
+              break-words whitespace-normal
+              transition-all duration-300
+            "
+          >
+            {service.title}
+          </span>
         </div>
-        <span
-          className="
-            text-[11px] sm:text-sm md:text-base
-            font-semibold text-center
-            group-data-[state=active]:text-white
-            line-clamp-2
-            break-words whitespace-normal
-            transition-all duration-300
-          "
-        >
-          {service.title}
-        </span>
-      </div>
-    </TabsTrigger>
-  ))}
+      </TabsTrigger>
+    );
+  })}
 </TabsList>
 
 

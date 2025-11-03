@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from 'react';
+import  { useEffect, useRef } from 'react';
 import { Award, Shield, Clock, Leaf, Users, Lightbulb } from 'lucide-react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
@@ -6,8 +6,8 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger';
 gsap.registerPlugin(ScrollTrigger);
 
 export const WhyChooseUs = () => {
-  const sectionRef = useRef(null);
-  const cardsRef = useRef([]);
+  const sectionRef = useRef<HTMLDivElement | null>(null);
+  const cardsRef = useRef<HTMLDivElement[]>([]);
 
   useEffect(() => {
     const ctx = gsap.context(() => {
@@ -28,7 +28,7 @@ export const WhyChooseUs = () => {
     return () => ctx.revert();
   }, []);
 
-  const addToRefs = (el) => {
+  const addToRefs = (el: HTMLDivElement | null) => {
     if (el && !cardsRef.current.includes(el)) {
       cardsRef.current.push(el);
     }

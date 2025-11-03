@@ -6,7 +6,6 @@ import herovid from '@/assets/images/heroVid.mp4'; // 👈 Import your video fil
 
 export const HeroSection = () => {
   const heroRef = useRef(null);
-  const sunRef = useRef(null);
   const titleRef = useRef(null);
   const subtitleRef = useRef(null);
   const buttonsRef = useRef(null);
@@ -57,20 +56,16 @@ export const HeroSection = () => {
           </p>
 
           <div ref={buttonsRef} className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Button
-              size="lg"
-              className="bg-secondary hover:bg-primary text-white font-semibold px-8 py-6 text-lg shadow-lg"
-            >
-              Explore Our Services <ChevronRight className="ml-2" />
-            </Button>
+            <a href="#services">
+              <Button
+                size="lg"
+                className="bg-secondary hover:bg-primary text-white font-semibold px-8 py-6 text-lg shadow-lg"
+              >
+                Explore Our Services
+              </Button>
+            </a>
 
-            <Button
-              size="lg"
-              className="bg-slate-700 hover:bg-slate-600 text-white px-8 py-6 text-lg shadow-lg"
-              style={{ textShadow: '1px 1px 3px rgba(0,0,0,0.7)' }}
-            >
-              View Projects
-            </Button>
+            
           </div>
         </div>
       </div>

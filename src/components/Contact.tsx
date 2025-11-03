@@ -1,11 +1,12 @@
 import 
- { useEffect, useRef } from 'react';
+ { useEffect, useRef, useState } from 'react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
 import { MapPin, Phone, Mail } from 'lucide-react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import emailjs from 'emailjs-com';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -13,7 +14,14 @@ export const ContactSection = () => {
   const sectionRef = useRef(null);
   const infoRef = useRef(null);
   const formRef = useRef(null);
+  const [formData, setFormData] = useState({
+    name: '',
+    email: '',
+    subject: '',
+    message: '',
+  });
 
+  const [status, setStatus] = useState('');
   useEffect(() => {
     const ctx = gsap.context(() => {
       gsap.from(infoRef.current, {
@@ -43,6 +51,31 @@ export const ContactSection = () => {
 
     return () => ctx.revert();
   }, []);
+    const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    const { name, value } = e.target;
+    setFormData(prev => ({ ...prev, [name]: value }));
+  };
+ const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    setStatus('Sending...');
+
+    emailjs
+      .send(
+        'service_4yjwtwp',
+        'template_4gch29t',
+        formData,
+        'YXqZiEvWxxodN9_ZH'
+      )
+      .then(
+        () => {
+          setStatus('✅ Message sent successfully!');
+          setFormData({ name: '', email: '', subject: '', message: '' });
+        },
+        () => {
+          setStatus('❌ Failed to send. Please try again later.');
+        }
+      );
+  };
 
   return (
     <section ref={sectionRef} className="py-20 px-6 bg-slate-900 text-white">
@@ -59,28 +92,68 @@ export const ContactSection = () => {
             <div className="space-y-4">
               <div className="flex items-center gap-4">
                 <MapPin className="w-6 h-6 text-primary" />
-                <span>Riyadh, Saudi Arabia</span>
+                <span>4334 Abdullah Ibn
+Saud Rd, Abdullah
+Branch 12363 RIYADH</span>
               </div>
               <div className="flex items-center gap-4">
                 <Phone className="w-6 h-6 text-primary" />
-                <span>+966 XX XXX XXXX</span>
+                <span>+92919192929292</span>
               </div>
               <div className="flex items-center gap-4">
                 <Mail className="w-6 h-6 text-primary" />
-                <span>info@amc-solutions.com</span>
+                <span>info@amc.com</span>
               </div>
             </div>
           </div>
 
           <div ref={formRef}>
             <div className="space-y-4">
-              <Input placeholder="Your Name" className="bg-slate-800 border-slate-700 text-white" />
-              <Input placeholder="Your Email" type="email" className="bg-slate-800 border-slate-700 text-white" />
-              <Input placeholder="Subject" className="bg-slate-800 border-slate-700 text-white" />
-              <Textarea placeholder="Your Message" rows={4} className="bg-slate-800 border-slate-700 text-white" />
-              <Button className="w-full bg-primary hover:bg-primary/90 text-white">
+             <form onSubmit={handleSubmit} className="space-y-4">
+              <Input
+                name="name"
+                value={formData.name}
+                onChange={handleChange}
+                placeholder="Your Name"
+                className="bg-slate-800 border-slate-700 text-white"
+                required
+                maxLength={50}
+              />
+              <Input
+                name="email"
+                type="email"
+                value={formData.email}
+                onChange={handleChange}
+                placeholder="Your Email"
+                className="bg-slate-800 border-slate-700 text-white"
+                required
+                maxLength={100}
+
+              />
+              <Input
+                name="subject"
+                value={formData.subject}
+                onChange={handleChange}
+                placeholder="Subject"
+                className="bg-slate-800 border-slate-700 text-white"
+                required
+                maxLength={100}
+              />
+              <Textarea
+                name="message"
+                value={formData.message}
+                onChange={handleChange}
+                placeholder="Your Message"
+                rows={4}
+                className="bg-slate-800 border-slate-700 text-white"
+                required
+                maxLength={500}
+              />
+              <Button type="submit" className="w-full bg-primary hover:bg-primary/90 text-white">
                 Send Message
               </Button>
+              {status && <p className="text-center text-sm mt-2">{status}</p>}
+            </form>
             </div>
           </div>
         </div>
