@@ -78,7 +78,7 @@ export const ContactSection = () => {
   };
 
   return (
-    <section ref={sectionRef} className="py-20 px-6 bg-slate-900 text-white">
+    <section ref={sectionRef} className="py-20 px-6 bg-slate-900 text-white overflow-x-hidden">
       <div className="max-w-6xl mx-auto">
         <div className="text-center mb-16">
           <h2 className="text-4xl md:text-5xl font-bold mb-4">Get In Touch</h2>
