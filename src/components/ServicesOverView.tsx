@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { Tabs, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { Building2, Zap, Sun, Camera, Trees, Settings, MapPin } from 'lucide-react';
 import { Images } from '@/assets/images';
@@ -158,6 +158,7 @@ Our BMS Services include:
 export default function ServicesOverview() {
   const [activeTab, setActiveTab] = useState(services[0].id);
   const [isTransitioning, setIsTransitioning] = useState(false);
+  const contentRef = useRef<HTMLDivElement | null>(null); // 👈 Add ref for tab content
 
   useEffect(() => {
     setIsTransitioning(true);
@@ -165,8 +166,20 @@ export default function ServicesOverview() {
     return () => clearTimeout(timer);
   }, [activeTab]);
 
-  const activeService = services.find(s => s.id === activeTab);
+useEffect(() => {
+    if (contentRef.current) {
+      const navbarHeight = 100; // 👈 adjust this to match your fixed navbar height
+      const contentTop = contentRef.current.getBoundingClientRect().top + window.scrollY;
+      const scrollTarget = contentTop - navbarHeight - 10; // small extra gap
 
+      window.scrollTo({
+        top: scrollTarget,
+        behavior: 'smooth',
+      });
+    }
+  }, [activeTab]);
+
+  const activeService = services.find((s) => s.id === activeTab);
   return (
     <section className="py-16 md:py-24 bg-background2">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
@@ -236,10 +249,12 @@ export default function ServicesOverview() {
 
           {/* Active Tab Content */}
           <div className={`
+          
             mt-10 md:mt-14
             transition-all duration-500 ease-in-out
             ${isTransitioning ? 'opacity-0 scale-95 translate-y-4' : 'opacity-100 scale-100 translate-y-0'}
-          `}>
+          `}            ref={contentRef}
+>
             <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 items-center">
               {/* Text Content */}
               <div className="space-y-6 order-2 lg:order-1 animate-in fade-in-30 slide-in-from-left-10 duration-500">
