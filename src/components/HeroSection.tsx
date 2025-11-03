@@ -16,14 +16,22 @@ export const HeroSection = () => {
       className="relative h-screen flex items-center justify-center overflow-hidden"
     >
       {/* Background Video */}
-      <video
+      {/* <video
         className="absolute top-0 left-0 w-full h-full object-cover"
-        src={herovid}
+        src={"https://www.youtube.com/embed/68fVavlz3Sg?si=rySWQvvI9Hcc0X-j" }
         autoPlay
         loop
         muted
         playsInline
-      />
+      /> */}
+         <div className="absolute top-0 left-0 w-full h-full overflow-hidden">
+        <iframe
+          className="absolute top-1/2 left-1/2 w-[177.78vh] h-[100vh] min-w-full min-h-full -translate-x-1/2 -translate-y-1/2 scale-125"
+          src="https://www.youtube.com/embed/68fVavlz3Sg?autoplay=1&mute=1&loop=1&playlist=68fVavlz3Sg&controls=0&showinfo=0&modestbranding=1"
+          title="Hero Video"
+          allow="autoplay; fullscreen"
+        ></iframe>
+      </div>
 
       {/* Overlay for contrast */}
       <div className="absolute inset-0 bg-black/40" />
