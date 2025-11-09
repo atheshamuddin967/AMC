@@ -8,6 +8,8 @@ export const Footer = () => {
     { name: 'Services', href: '#services' },
     { name: 'Process', href: '#process' },
     { name: 'Contact', href: '#contact' },
+        { name: 'Projects', href: '#projects' },
+
   ];
 
   return (
@@ -22,7 +24,7 @@ export const Footer = () => {
               className="h-24 mx-auto md:mx-0 mb-4"
             />
             <p className="text-gray-300 text-sm leading-relaxed">
-              Building the Future, Powering Sustainability.  
+              Building the Future, Powering Sustainability.
               We deliver innovative, efficient, and reliable energy solutions.
             </p>
           </div>
@@ -49,36 +51,34 @@ export const Footer = () => {
             <h4 className="font-bold text-white mb-4 text-lg">Contact Us</h4>
             <ul className="space-y-3 text-gray-300 text-sm">
               <li className="flex items-start gap-3 justify-center md:justify-start">
-  <MapPin size={18} className="text-primary mt-0.5" />
-  <a
-    href="https://www.google.com/maps?q=123+Green+Energy+Street,+Kentucky,+USA"
-    target="_blank"
-    rel="noopener noreferrer"
-    className="hover:text-white transition-colors"
-  >
-    123 Green Energy Street, Kentucky, USA
-  </a>
-</li>
+                <MapPin size={18} className="text-primary mt-0.5" />
+                <a
+                  href="https://www.google.com/maps?q=123+Green+Energy+Street,+Kentucky,+USA"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="hover:text-white transition-colors"
+                >
+                  Jarir Road Malaz Riyadh KSA
+                </a>
+              </li>
 
-<li className="flex items-center gap-3 justify-center md:justify-start">
-  <Phone size={18} className="text-primary" />
-  <a
-    href="tel:+1234567890"
-    className="hover:text-white transition-colors"
-  >
-    +1 (234) 567-890
-  </a>
-</li>
+              <li className="flex items-center gap-3 justify-center md:justify-start">
+                <Phone size={18} className="text-primary" />
+                <a
+                  href="tel:+966 541844200"
+                  className="hover:text-white transition-colors"
+                >
+                  +966 541844200  </a>
+              </li>
 
-<li className="flex items-center gap-3 justify-center md:justify-start">
-  <Mail size={18} className="text-primary" />
-  <a
-    href="mailto:info@amc.com"
-    className="hover:text-white transition-colors"
-  >
-    info@amc.com
-  </a>
-</li>
+              <li className="flex items-center gap-3 justify-center md:justify-start">
+                <Mail size={18} className="text-primary" />
+                <a
+                  href="mailto:Info@amc-sa.co"
+                  className="hover:text-white transition-colors"
+                >
+                  Info@amc-sa.co  </a>
+              </li>
 
             </ul>
           </div>

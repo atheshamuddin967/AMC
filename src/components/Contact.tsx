@@ -92,17 +92,15 @@ export const ContactSection = () => {
             <div className="space-y-4">
               <div className="flex items-center gap-4">
                 <MapPin className="w-6 h-6 text-primary" />
-                <span>4334 Abdullah Ibn
-Saud Rd, Abdullah
-Branch 12363 RIYADH</span>
+                <span>Jarir Road Malaz Riyadh KSA</span>
               </div>
               <div className="flex items-center gap-4">
                 <Phone className="w-6 h-6 text-primary" />
-                <span>+92919192929292</span>
+                <span>+966 541844200 (WhatsApp Only)</span>
               </div>
               <div className="flex items-center gap-4">
                 <Mail className="w-6 h-6 text-primary" />
-                <span>info@amc.com</span>
+                <span>Info@amc-sa.co</span>
               </div>
             </div>
           </div>
