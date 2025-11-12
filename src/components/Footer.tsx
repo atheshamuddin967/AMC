@@ -8,7 +8,7 @@ export const Footer = () => {
     { name: 'Services', href: '#services' },
     { name: 'Process', href: '#process' },
     { name: 'Contact', href: '#contact' },
-        { name: 'Projects', href: '#projects' },
+        // { name: 'Projects', href: '#projects' },
 
   ];
 
