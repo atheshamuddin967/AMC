@@ -61,34 +61,42 @@ export default function GallerySection() {
                   />
                 </DialogTrigger>
 
-                {/* MODAL */}
-                <DialogContent
-                  className="max-w-5xl p-0 overflow-hidden bg-black"
-                  onKeyDown={handleKey}
-                >
-                  <div className="relative w-full h-[70vh] flex items-center justify-center">
-                    <img
-                      src={galleryImages[current]}
-                      className="object-contain w-full h-full"
-                    />
+             <DialogContent
+  className="max-w-5xl p-0 overflow-hidden bg-black"
+  onKeyDown={handleKey}
+>
+  {/* CLOSE BUTTON (Top-Right) */}
+  <button
+    onClick={() => setOpen(false)}
+    className="absolute right-4 top-4 z-50 bg-white/20 hover:bg-white/40 text-white px-3 py-1 rounded-full text-xl"
+  >
+    ✕
+  </button>
 
-                    {/* LEFT ARROW */}
-                    <button
-                      onClick={prevImg}
-                      className="absolute left-4 bg-white/20 hover:bg-white/40 text-white px-4 py-2 rounded-full text-2xl"
-                    >
-                      ❮
-                    </button>
+  <div className="relative w-full h-[70vh] flex items-center justify-center">
+    <img
+      src={galleryImages[current]}
+      className="object-contain w-full h-full"
+    />
 
-                    {/* RIGHT ARROW */}
-                    <button
-                      onClick={nextImg}
-                      className="absolute right-4 bg-white/20 hover:bg-white/40 text-white px-4 py-2 rounded-full text-2xl"
-                    >
-                      ❯
-                    </button>
-                  </div>
-                </DialogContent>
+    {/* Left */}
+    <button
+      onClick={prevImg}
+      className="absolute left-4 bg-white/20 hover:bg-white/40 text-white px-4 py-2 rounded-full text-2xl"
+    >
+      ❮
+    </button>
+
+    {/* Right */}
+    <button
+      onClick={nextImg}
+      className="absolute right-4 bg-white/20 hover:bg-white/40 text-white px-4 py-2 rounded-full text-2xl"
+    >
+      ❯
+    </button>
+  </div>
+</DialogContent>
+
               </Dialog>
             );
           })}
