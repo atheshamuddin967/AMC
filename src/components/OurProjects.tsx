@@ -4,10 +4,10 @@ import { Images } from "@/assets/images";
 
 const galleryImages = [
   Images.pic1, Images.pic2, Images.pic3,
-  Images.pic7, Images.pic8, Images.pic9, Images.pic10,
-  Images.pic11, Images.pic12, Images.pic13, Images.pic14,
+  Images.pic7, Images.pic8, Images.pic10,
+  Images.pic11, Images.pic12,  Images.pic22,
   Images.pic15, Images.pic16, Images.pic17, Images.pic18,
-  Images.pic19, Images.pic20, Images.pic21, Images.pic22,
+  Images.pic19, Images.pic20, Images.pic21,,
 ];
 
 const ITEMS_PER_PAGE = 6;
@@ -38,7 +38,7 @@ export default function GallerySection() {
       <div className="max-w-7xl mx-auto">
         
         <div className="text-center mb-20">
-          <h2 className="text-4xl md:text-5xl font-extrabold">Our Gallery</h2>
+          <h2 className="text-4xl md:text-5xl font-extrabold">Our Projects Gallery</h2>
           <p className="text-lg text-gray-600 mt-3">Explore some of our recent work</p>
           <div className="w-20 h-1 bg-background2 mx-auto mt-5 rounded-full"></div>
         </div>
