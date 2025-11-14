@@ -35,9 +35,9 @@ export const StatsSection = () => {
   };
 
   const stats = [
-    { number: "120+", label: "Renewable Installations" },
-    { number: "90%", label: "Energy Efficiency" },
-    { number: "500+", label: "Projects Completed" },
+    { number: "65", label: "Renewable Installations" },
+    { number: "75%", label: "Energy Efficiency" },
+    { number: "61", label: "Projects Completed" },
     { number: "100%", label: "Client Satisfaction" }
   ];
 
