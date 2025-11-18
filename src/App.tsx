@@ -12,6 +12,7 @@ import { StatsSection } from './components/Stats';
 import { WhyChooseUs } from './components/Whychoseus';
 import ServicesOverview from './components/ServicesOverView';
 import ProjectsSection from './components/OurProjects';
+import OurSolutionServices from './components/OurSolutionServices';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -52,9 +53,14 @@ export default function App() {
       <div id="services">
         <ServicesOverview />
       </div>
+         <div>
+        <OurSolutionServices/>
+      </div>
         <div id="gallery">
         <ProjectsSection />
       </div>
+
+   
       <div id="process">
         <ProcessTimeline />
       </div>
