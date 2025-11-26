@@ -1,0 +1,8 @@
+{
+  "host": "ftp.bon.maw.temporary.site",
+  "user": "alee@sscsa.co",
+  "password": "Pass$$2024##",
+  "port": 21,
+  "secure": false,
+  "remotePath": "/"
+}
