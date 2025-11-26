@@ -10,7 +10,7 @@ const services = [
     id: 'green-energy',
     icon: <Sun className="w-10 h-10 text-primary" />,
     title: "Green Energy Solutions",
-    description: `AMC is providing a wide range of activities in the field of thermostatics, renewable energy, and energy efficiency. 
+    description: `Solution Source is providing a wide range of activities in the field of thermostatics, renewable energy, and energy efficiency. 
 We focus on implementing modern concepts of HVAC systems for various types of facilities.
 
 Furthermore, we offer comprehensive consulting services in the field of energy efficiency. 
@@ -29,7 +29,7 @@ with a strong emphasis on energy efficiency and international experience in HVAC
     id: 'construction',
     icon: <Building2 className="w-10 h-10 text-primary" />,
     title: "Construction & Build Solutions",
-    description: `AMC provides comprehensive construction and building services that cover every stage 
+    description: `Solution Source provides comprehensive construction and building services that cover every stage 
 from concept to completion. We specialize in the execution of civil, structural, and architectural works 
 for residential, commercial, and industrial projects.
 
@@ -50,7 +50,7 @@ Our construction and build solutions include:
     id: 'infrastructure',
     icon: <MapPin className="w-10 h-10 text-primary" />,
     title: "Infrastructure Development",
-    description: `AMC provides integrated infrastructure development services that form the backbone of modern communities 
+    description: `Solution Source provides integrated infrastructure development services that form the backbone of modern communities 
 and industrial operations. Our expertise covers planning, design, and execution of essential systems that ensure 
 reliable connectivity, sustainability, and long-term value.
 
@@ -71,7 +71,7 @@ Our Infrastructure Development services include:
     id: 'electrical',
     icon: <Zap className="w-10 h-10 text-primary" />,
     title: "Electrical & Mechanical Works",
-    description: `AMC delivers a full spectrum of Electrical and Mechanical services designed to meet the demands 
+    description: `Solution Source delivers a full spectrum of Electrical and Mechanical services designed to meet the demands 
 of modern infrastructure. We provide complete design, installation, testing, and commissioning solutions 
 for power distribution, lighting, HVAC, and control systems.
 
@@ -92,7 +92,7 @@ Our Electrical & Mechanical services include:
     id: 'low-current',
     icon: <Camera className="w-10 h-10 text-primary" />,
     title: "Low Current Systems",
-    description: `AMC offers a wide range of Low Current Systems, Solutions, and Services 
+    description: `Solution Source offers a wide range of Low Current Systems, Solutions, and Services 
 that meet customer vision, strategies, business objectives, safety, and security needs.
 
 Our solutions help customers capitalize on market trends, ensuring a safe, secure, and comfortable environment. 
@@ -116,7 +116,7 @@ Low Current Services include:
     id: 'landscape',
     icon: <Trees className="w-10 h-10 text-primary" />,
     title: "Landscape Services",
-    description: `AMC provides professional landscape design and maintenance services that transform outdoor spaces 
+    description: `Solution Source provides professional landscape design and maintenance services that transform outdoor spaces 
 into beautiful, sustainable environments. Our approach integrates nature with functionality to create landscapes 
 that enhance aesthetics, comfort, and environmental balance.
 
@@ -137,11 +137,11 @@ Our Landscape Services include:
     id: 'bms',
     icon: <Settings className="w-10 h-10 text-primary" />,
     title: "Building Management Systems (BMS)",
-    description: `AMC specializes in the design, installation, and integration of advanced Building Management Systems 
+    description: `Solution Source specializes in the design, installation, and integration of advanced Building Management Systems 
 that optimize performance, energy efficiency, and occupant comfort. Our BMS solutions provide centralized control 
 of HVAC, lighting, power, security, and other building systems through intelligent automation.
 
-With AMC’s expertise, facilities can achieve improved operational efficiency, reduced energy costs, and enhanced safety. 
+With Solution Sourrce’s expertise, facilities can achieve improved operational efficiency, reduced energy costs, and enhanced safety. 
 Our solutions are scalable and compatible with various technologies, allowing seamless management and monitoring.
 
 Our BMS Services include:

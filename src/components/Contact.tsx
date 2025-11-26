@@ -105,7 +105,7 @@ export const ContactSection = () => {
 
               <div className="flex items-center gap-4">
                 <Mail className="w-6 h-6 text-primary" />
-                <span>Info@amc-sa.co</span>
+                <span>info@sscsa.co</span>
               </div>
             </div>
           </div>

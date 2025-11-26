@@ -74,8 +74,8 @@ const handleSmoothScroll = (e: React.MouseEvent, href: string) => {
           <div className="text-2xl font-bold text-white">
             <img
               src={Images.logo}
-              alt="AMC Logo"
-              style={{ height: "70px", width: "auto" }}
+              alt="Solution Source Logo"
+              style={{  width: "200px"  }}
             />
           </div>
 

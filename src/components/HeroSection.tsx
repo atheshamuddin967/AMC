@@ -50,7 +50,7 @@ export const HeroSection = () => {
               textShadow: '1px 1px 6px rgba(0,0,0,0.8)',
             }}
           >
-            From Construction to Renewable Energy — AMC empowers progress with
+            From Construction to Renewable Energy — Solution Source empowers progress with
             innovation.
           </p>
 

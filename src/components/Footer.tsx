@@ -20,7 +20,7 @@ export const Footer = () => {
           <div>
             <img
               src={Images.logo}
-              alt="AMC Logo"
+              alt="Solution Source Logo"
               className="h-24 mx-auto md:mx-0 mb-4"
             />
             <p className="text-gray-300 text-sm leading-relaxed">
@@ -81,10 +81,10 @@ export const Footer = () => {
               <li className="flex items-center gap-3 justify-center md:justify-start">
                 <Mail size={18} className="text-primary" />
                 <a
-                  href="mailto:Info@amc-sa.co"
+                  href="mailto:info@sscsa.co"
                   className="hover:text-white transition-colors"
                 >
-                  Info@amc-sa.co  </a>
+                  info@sscsa.co  </a>
               </li>
 
             </ul>
@@ -118,7 +118,7 @@ export const Footer = () => {
 
         {/* Bottom Bar */}
         <div className="border-t border-primary/30 pt-6 text-center text-gray-300 text-sm">
-          <p>&copy; 2025 AMC. All rights reserved.</p>
+          <p>&copy; 2025 Solution Sourrce. All rights reserved.</p>
         </div>
       </div>
     </footer>

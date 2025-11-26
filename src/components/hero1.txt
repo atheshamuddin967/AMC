@@ -91,7 +91,7 @@ export const HeroSection = () => {
           ref={subtitleRef}
           className="text-xl md:text-2xl text-gray-300 mb-10 max-w-3xl mx-auto"
         >
-          From Construction to Renewable Energy — AMC empowers progress with innovation.
+          From Construction to Renewable Energy — Solution Source empowers progress with innovation.
         </p>
         <div
           ref={buttonsRef}

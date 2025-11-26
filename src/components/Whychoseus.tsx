@@ -47,7 +47,7 @@ export const WhyChooseUs = () => {
     <section ref={sectionRef} className="py-20 px-6 bg-slate-100">
       <div className="max-w-7xl mx-auto">
         <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-bold text-slate-900 mb-4">Why Choose AMC</h2>
+          <h2 className="text-4xl md:text-5xl font-bold text-slate-900 mb-4">Why Choose Solution Source</h2>
           <p className="text-xl text-gray-600">Excellence in every aspect</p>
           <div className="w-24 h-1 bg-primary mx-auto mt-4"></div>
         </div>
