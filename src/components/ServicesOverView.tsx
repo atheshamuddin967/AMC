@@ -1,15 +1,26 @@
-'use client';
+"use client";
 
-import { useState, useEffect, useRef } from 'react';
-import { Tabs, TabsList, TabsTrigger } from '@/components/ui/tabs';
-import { Building2, Zap, Sun, Camera, Trees, Settings, MapPin } from 'lucide-react';
-import { Images } from '@/assets/images';
+import { useState, useEffect, useRef } from "react";
+import { Tabs, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import {
+  Building2,
+  Zap,
+  Sun,
+  Camera,
+  Trees,
+  Settings,
+  MapPin,
+  ShieldCheck,
+} from "lucide-react";
+import { Images } from "@/assets/images";
 
 const services = [
   {
-    id: 'green-energy',
+    id: "green-energy",
     icon: <Sun className="w-10 h-10 text-primary" />,
     title: "Green Energy Solutions",
+        logo:null,
+
     description: `Solution Source is providing a wide range of activities in the field of thermostatics, renewable energy, and energy efficiency. 
 We focus on implementing modern concepts of HVAC systems for various types of facilities.
 
@@ -26,9 +37,11 @@ with a strong emphasis on energy efficiency and international experience in HVAC
     image: Images.solar,
   },
   {
-    id: 'construction',
+    id: "construction",
     icon: <Building2 className="w-10 h-10 text-primary" />,
     title: "Construction & Build Solutions",
+        logo:null,
+
     description: `Solution Source provides comprehensive construction and building services that cover every stage 
 from concept to completion. We specialize in the execution of civil, structural, and architectural works 
 for residential, commercial, and industrial projects.
@@ -46,10 +59,12 @@ Our construction and build solutions include:
 • Safety compliance and sustainability integration`,
     image: Images.construction,
   },
-    {
-    id: 'infrastructure',
+  {
+    id: "infrastructure",
     icon: <MapPin className="w-10 h-10 text-primary" />,
     title: "Infrastructure Development",
+        logo:null,
+
     description: `Solution Source provides integrated infrastructure development services that form the backbone of modern communities 
 and industrial operations. Our expertise covers planning, design, and execution of essential systems that ensure 
 reliable connectivity, sustainability, and long-term value.
@@ -68,9 +83,11 @@ Our Infrastructure Development services include:
     image: Images.infra,
   },
   {
-    id: 'electrical',
+    id: "electrical",
     icon: <Zap className="w-10 h-10 text-primary" />,
     title: "Electrical & Mechanical Works",
+        logo:null,
+
     description: `Solution Source delivers a full spectrum of Electrical and Mechanical services designed to meet the demands 
 of modern infrastructure. We provide complete design, installation, testing, and commissioning solutions 
 for power distribution, lighting, HVAC, and control systems.
@@ -89,9 +106,10 @@ Our Electrical & Mechanical services include:
     image: Images.mep,
   },
   {
-    id: 'low-current',
+    id: "low-current",
     icon: <Camera className="w-10 h-10 text-primary" />,
     title: "Low Current Systems",
+    logo:null,
     description: `Solution Source offers a wide range of Low Current Systems, Solutions, and Services 
 that meet customer vision, strategies, business objectives, safety, and security needs.
 
@@ -113,7 +131,7 @@ Low Current Services include:
     image: Images.low,
   },
   {
-    id: 'landscape',
+    id: "landscape",
     icon: <Trees className="w-10 h-10 text-primary" />,
     title: "Landscape Services",
     description: `Solution Source provides professional landscape design and maintenance services that transform outdoor spaces 
@@ -134,9 +152,10 @@ Our Landscape Services include:
     image: Images.land,
   },
   {
-    id: 'bms',
+    id: "bms",
     icon: <Settings className="w-10 h-10 text-primary" />,
     title: "Building Management Systems (BMS)",
+    logo:null,
     description: `Solution Source specializes in the design, installation, and integration of advanced Building Management Systems 
 that optimize performance, energy efficiency, and occupant comfort. Our BMS solutions provide centralized control 
 of HVAC, lighting, power, security, and other building systems through intelligent automation.
@@ -153,6 +172,28 @@ Our BMS Services include:
 • Predictive maintenance and data analytics`,
     image: Images.bms,
   },
+  {
+    id: "cyb",
+    icon: <ShieldCheck className="w-10 h-10 text-primary" />,
+    logo:Images.raptLogo,
+    title: "Cyber Security",
+    description: `Raptor Eye KPI is a tool that tracks and analyzes key performance indicators, providing real-time insights to help businesses optimize strategies and achieve their goals.
+Raptor Eye Is A trusted cybersecurity platform for businesses of all sizes
+
+Ensuring Compliance, Empowering Success
+Achieve excellence by adhering to industry standards and regulatory requirements. Protect your business, ensure ethical practices, and minimize risks with robust compliance solutions.
+
+Our Cyber Security Services include:
+• Integration with YARA Rules  
+• Integration with SIGMA Rules  
+• Integration with Net-Flow  
+• Integration with SOAR Platform  
+• Integration with Case Management  
+• Integration with Active Directory
+• Integartion with SLACK`,
+
+    image: Images.cyber,
+  },
 ];
 
 export default function ServicesOverview() {
@@ -166,15 +207,16 @@ export default function ServicesOverview() {
     return () => clearTimeout(timer);
   }, [activeTab]);
 
-useEffect(() => {
+  useEffect(() => {
     if (contentRef.current) {
       const navbarHeight = 100; // 👈 adjust this to match your fixed navbar height
-      const contentTop = contentRef.current.getBoundingClientRect().top + window.scrollY;
+      const contentTop =
+        contentRef.current.getBoundingClientRect().top + window.scrollY;
       const scrollTarget = contentTop - navbarHeight - 10; // small extra gap
 
       window.scrollTo({
         top: scrollTarget,
-        behavior: 'smooth',
+        behavior: "smooth",
       });
     }
   }, [activeTab]);
@@ -189,24 +231,25 @@ useEffect(() => {
             Our Services
           </h2>
           <p className="mt-4 text-lg text-muted-foreground max-w-3xl mx-auto">
-            Comprehensive engineering solutions tailored to your vision — from concept to completion.
+            Comprehensive engineering solutions tailored to your vision — from
+            concept to completion.
           </p>
         </div>
 
         <Tabs value={activeTab} onValueChange={setActiveTab} className="w-full">
-<TabsList
-  className="
+          <TabsList
+            className="
     flex flex-wrap justify-center
     gap-3 sm:gap-4
     p-0 bg-transparent
     h-auto
   "
->
-  {services.map((service) => (
-    <TabsTrigger
-      key={service.id}
-      value={service.id}
-      className={`
+          >
+            {services.map((service) => (
+              <TabsTrigger
+                key={service.id}
+                value={service.id}
+                className={`
         flex flex-col items-center justify-between
         p-3 sm:p-4 md:p-5
         rounded-xl
@@ -218,18 +261,22 @@ useEffect(() => {
         group
         min-h-[140px] sm:min-h-[150px] md:min-h-[160px]
         h-full text-center
-        ${activeTab === service.id ? 'ring-2 ring-white/20 ring-offset-2 ring-offset-background2' : ''}
+        ${
+          activeTab === service.id
+            ? "ring-2 ring-white/20 ring-offset-2 ring-offset-background2"
+            : ""
+        }
         w-[calc(50%-0.75rem)]     /* 2 per row on mobile */
         sm:w-[calc(33.333%-1rem)] /* 3 per row on tablet */
         lg:w-[calc(20%-1rem)]     /* 5 per row on desktop */
       `}
-    >
-      <div className="flex flex-col items-center justify-center flex-1">
-        <div className="mb-2 text-muted-foreground group-data-[state=active]:text-white transition-all duration-300 scale-100 group-data-[state=active]:scale-110">
-          {service.icon}
-        </div>
-        <span
-          className="
+              >
+                <div className="flex flex-col items-center justify-center flex-1">
+                  <div className="mb-2 text-muted-foreground group-data-[state=active]:text-white transition-all duration-300 scale-100 group-data-[state=active]:scale-110">
+                    {service.icon}
+                  </div>
+                  <span
+                    className="
             text-[11px] sm:text-sm md:text-base
             font-semibold text-center
             group-data-[state=active]:text-white
@@ -237,47 +284,59 @@ useEffect(() => {
             break-words whitespace-normal
             transition-all duration-300
           "
-        >
-          {service.title}
-        </span>
-      </div>
-    </TabsTrigger>
-  ))}
-</TabsList>
-
-
+                  >
+                    {service.title}
+                  </span>
+                </div>
+              </TabsTrigger>
+            ))}
+          </TabsList>
 
           {/* Active Tab Content */}
-          <div className={`
+          <div
+            className={`
           
             mt-10 md:mt-14
             transition-all duration-500 ease-in-out
-            ${isTransitioning ? 'opacity-0 scale-95 translate-y-4' : 'opacity-100 scale-100 translate-y-0'}
-          `}            ref={contentRef}
->
+            ${
+              isTransitioning
+                ? "opacity-0 scale-95 translate-y-4"
+                : "opacity-100 scale-100 translate-y-0"
+            }
+          `}
+            ref={contentRef}
+          >
             <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 items-center">
               {/* Text Content */}
               <div className="space-y-6 order-2 lg:order-1 animate-in fade-in-30 slide-in-from-left-10 duration-500">
                 <h3 className="text-2xl sm:text-3xl md:text-4xl font-bold bg-gradient-to-r from-white to-gray-200 bg-clip-text text-transparent">
                   {activeService?.title}
                 </h3>
+{activeService?.logo &&(
+                <img src={activeService?.logo} alt="logo" />)}
 
                 <div className="space-y-6 text-white/90">
-                  {activeService?.description.split('\n\n').map((block, i) => {
-                    const lines = block.split('\n');
-                    const hasBullets = lines.some(line => line.includes('•'));
+                  {activeService?.description.split("\n\n").map((block, i) => {
+                    const lines = block.split("\n");
+                    const hasBullets = lines.some((line) => line.includes("•"));
 
                     if (hasBullets) {
                       return (
                         <ul key={i} className="space-y-2 mt-4">
                           {lines.map((line, j) => {
                             const trimmed = line.trim();
-                            if (trimmed.startsWith('•') || trimmed.includes('•')) {
+                            if (
+                              trimmed.startsWith("•") ||
+                              trimmed.includes("•")
+                            ) {
                               return (
-                                <li key={j} className="flex items-start gap-3 text-base sm:text-lg">
+                                <li
+                                  key={j}
+                                  className="flex items-start gap-3 text-base sm:text-lg"
+                                >
                                   <span className="mt-1.5 w-1.5 h-1.5 rounded-full bg-primary flex-shrink-0" />
                                   <span className="leading-relaxed">
-                                    {trimmed.replace('•', '').trim()}
+                                    {trimmed.replace("•", "").trim()}
                                   </span>
                                 </li>
                               );
@@ -288,7 +347,10 @@ useEffect(() => {
                       );
                     } else {
                       return (
-                        <p key={i} className="text-base sm:text-lg leading-relaxed max-w-2xl">
+                        <p
+                          key={i}
+                          className="text-base sm:text-lg leading-relaxed max-w-2xl"
+                        >
                           {block}
                         </p>
                       );
@@ -298,14 +360,16 @@ useEffect(() => {
               </div>
 
               {/* Image */}
-              <div className="
+              <div
+                className="
                 relative h-56 sm:h-64 md:h-80 lg:h-96 
                 rounded-3xl overflow-hidden 
                 shadow-2xl shadow-black/30
                 order-1 lg:order-2
                 animate-in fade-in-50 slide-in-from-right-10 duration-700
                 group/image
-              ">
+              "
+              >
                 <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent z-10" />
                 <img
                   src={activeService?.image}

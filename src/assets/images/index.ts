@@ -16,6 +16,8 @@ import energy3 from './energyStorage.jpg'
 import energy4 from './energyStorage2.jpg'
 import energy5 from './energyStorage3.jpg'
 import energy6 from './energyStorage4.png'
+import cyber from './cybersec.jpg'
+import raptLogo from "./raptLogo.png"
 
 const importedImages = import.meta.glob<string>('./*.{jpg,jpeg,png}', {
   eager: true,
@@ -43,6 +45,8 @@ export const Images: Record<string, string> = {
   low,
   bms,
   infra,
+  cyber,
+  raptLogo,
     solarcontainer,
     energy2,energy3,energy4,energy5,energy6,energyStorage,
 

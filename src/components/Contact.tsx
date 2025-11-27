@@ -98,10 +98,7 @@ export const ContactSection = () => {
                 <Phone className="w-6 h-6 text-primary" />
                 <span>+966 511070317</span>
               </div>
-              <div className="flex items-center gap-4">
-                <Phone className="w-6 h-6 text-primary" />
-                <span>+966 541844200 (WhatsApp Only)</span>
-              </div>
+           
 
               <div className="flex items-center gap-4">
                 <Mail className="w-6 h-6 text-primary" />
