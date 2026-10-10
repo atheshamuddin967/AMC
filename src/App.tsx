@@ -1,18 +1,18 @@
 import { useEffect } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { AboutSection } from "./components/AboutSection";
-import { ContactSection } from "./components/Contact";
-import { Footer } from "./components/Footer";
-import { Navbar } from "./components/Header";
-import { HeroSection } from "./components/HeroSection";
-import { MissionVision } from "./components/MissionVission";
-import { ProcessTimeline } from "./components/ProcessessTimeline";
-import { StatsSection } from "./components/Stats";
-import { WhyChooseUs } from "./components/Whychoseus";
-import ServicesOverview from "./components/ServicesOverView";
-import ProjectsSection from "./components/OurProjects";
-import OurSolutionServices from "./components/OurSolutionServices";
+// import { AboutSection } from "./components/AboutSection";
+// import { ContactSection } from "./components/Contact";
+// import { Footer } from "./components/Footer";
+// import { Navbar } from "./components/Header";
+// import { HeroSection } from "./components/HeroSection";
+// import { MissionVision } from "./components/MissionVission";
+// import { ProcessTimeline } from "./components/ProcessessTimeline";
+// import { StatsSection } from "./components/Stats";
+// import { WhyChooseUs } from "./components/Whychoseus";
+// import ServicesOverview from "./components/ServicesOverView";
+// import ProjectsSection from "./components/OurProjects";
+// import OurSolutionServices from "./components/OurSolutionServices";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -42,7 +42,7 @@ export default function App() {
   }, []);
   return (
     <div className="min-h-screen ">
-      <Navbar />
+      {/* <Navbar />
       <div id="home">
         <HeroSection />
       </div>
@@ -68,7 +68,7 @@ export default function App() {
       <div id="contact">
         <ContactSection />
       </div>
-      <Footer />
+      <Footer /> */}
     </div>
   );
 }
